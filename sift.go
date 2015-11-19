@@ -31,6 +31,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/shiena/ansicolor"
 	"github.com/svent/go-flags"
 	"github.com/svent/go-nbreader"
 	"golang.org/x/crypto/ssh/terminal"
@@ -144,7 +145,7 @@ var global = struct {
 	totalResultCount      int64
 	totalTargetCount      int64
 }{
-	outputFile:         os.Stdout,
+	outputFile:         ansicolor.NewAnsiColorWriter(os.Stdout),
 	netTcpRegex:        regexp.MustCompile(`^(tcp[46]?)://(.*:\d+)$`),
 	streamingThreshold: 1 << 16,
 }

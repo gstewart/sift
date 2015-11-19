@@ -638,7 +638,7 @@ func (o *Options) performAutoDetections(targets []string) {
 	if o.Color == "auto" {
 		// auto activate colored output only if STDOUT is a terminal
 		if o.Output == "" {
-			if runtime.GOOS != "windows" && terminal.IsTerminal(int(os.Stdout.Fd())) {
+			if terminal.IsTerminal(int(os.Stdout.Fd())) {
 				o.Color = "on"
 			} else {
 				o.Color = "off"
